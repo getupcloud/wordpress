@@ -34,13 +34,20 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		echo >&2 '  (Also of interest might be WORDPRESS_DB_USER and WORDPRESS_DB_NAME.)'
 		exit 1
 	fi
-
+	set -x
 	if ! [ -e index.php -a -e wp-includes/version.php ]; then
 		echo >&2 "WordPress not found in $(pwd) - copying now..."
-		if [ "$(ls -A)" ]; then
-			echo >&2 "WARNING: $(pwd) is not empty - press Ctrl+C now if this is an error!"
-			( set -x; ls -A; sleep 10 )
-		fi
+		#if [ "$(ls -A)" ]; then
+		#	echo >&2 "WARNING: $(pwd) is not empty - press Ctrl+C now if this is an error!"
+		#	( set -x; ls -A; sleep 10 )
+		#fi
+		{
+		id
+		pwd 
+		ls -la /usr/src
+		ls -la /usr/src/wordpress
+		ls -la /var/www/html
+		} >&2
 		tar cf - --one-file-system -C /usr/src/wordpress . | tar xf -
 		echo >&2 "Complete! WordPress has been successfully copied to $(pwd)"
 		if [ ! -e .htaccess ]; then
