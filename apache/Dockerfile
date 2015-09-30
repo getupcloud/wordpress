@@ -18,7 +18,7 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VER
 	&& echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c - \
 	&& tar -xzf wordpress.tar.gz -C /usr/src/ \
 	&& rm wordpress.tar.gz \
-	&& chown -R www-data /usr/src/wordpress \
+	&& chown -R 1001:0 /usr/src/wordpress \
 	&& chmod 755 -R /var/www/html
 	
 #USER www-data
