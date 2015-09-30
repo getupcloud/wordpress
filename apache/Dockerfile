@@ -1,5 +1,5 @@
 FROM php:5.6-apache
-USER 1001
+
 RUN a2enmod rewrite
 
 # install the PHP extensions we need
@@ -21,7 +21,7 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VER
 	&& chown -R www-data:www-data /usr/src/wordpress
 
 COPY docker-entrypoint.sh /entrypoint.sh
-USER=1001
+USER 1001
 
 # grr, ENTRYPOINT resets CMD now
 ENTRYPOINT ["/entrypoint.sh"]
