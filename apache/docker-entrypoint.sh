@@ -42,10 +42,13 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		#	( set -x; ls -A; sleep 10 )
 		#fi
 		{
+		echo $USER
 		id
 		pwd 
 		ls -la /usr/src
 		ls -la /usr/src/wordpress
+		ls -la /var
+		ls -la /var/www
 		ls -la /var/www/html
 		} >&2
 		tar cf - --one-file-system -C /usr/src/wordpress . | tar xf -
