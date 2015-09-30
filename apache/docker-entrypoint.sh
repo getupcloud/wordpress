@@ -64,7 +64,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 				</IfModule>
 				# END WordPress
 			EOF
-			chown www-data:www-data .htaccess
+			#chown www-data:www-data .htaccess
 		fi
 	fi
 
@@ -79,7 +79,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 }
 
 EOPHP
-		chown www-data:www-data wp-config.php
+		#chown www-data:www-data wp-config.php
 	fi
 
 	# see http://stackoverflow.com/a/2705678/433558
