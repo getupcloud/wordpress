@@ -42,7 +42,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		#	( set -x; ls -A; sleep 10 )
 		#fi
 		{
-		echo $USER
+		env
 		id
 		pwd 
 		ls -la /usr/src
